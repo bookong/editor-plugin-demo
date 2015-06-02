@@ -5,12 +5,11 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.List;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.part.ViewPart;
 
 /**
@@ -30,7 +29,6 @@ public class NavigatorView extends ViewPart {
 //		list.add("中国");
 //		list.add("美国");
 		
-//		IWorkbench iWorkbench = ZestEditorPlugin.getDefault().getWorkbench();
 		
 		try {
 			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
@@ -49,6 +47,9 @@ public class NavigatorView extends ViewPart {
 			e.printStackTrace();
 		}
 		
+		NavigatorActionGroup actionGroup = new NavigatorActionGroup();
+		IActionBars bars = getViewSite().getActionBars();
+		actionGroup.fillActionBars(bars);
 	}
 
 	@Override
